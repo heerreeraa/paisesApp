@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Country, Name } from '../../interfaces/pais.interface';
 import { PaisService } from '../../services/pais.service';
 
@@ -14,9 +14,10 @@ export class PorPaisComponent {
 
   constructor( private paisService: PaisService ) { }
 
-  buscar() {
+  buscar( termino: string ) {
+
     this.hayError = false;
-    console.log(this.termino);
+    this.termino = termino;
 
     this.paisService.buscarPais( this.termino )
       .subscribe( (paises) => {
@@ -28,6 +29,11 @@ export class PorPaisComponent {
         this.paises   = [];
       });
 
+  }
+
+  sugerencias( termino: string ) {
+    this.hayError = false;
+    // TODO: Crear sugerencias
   }
 
 }
