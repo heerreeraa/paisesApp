@@ -1,1 +1,103 @@
-<p>ver-pais works!</p>
+<div *ngIf="!pais; else divPais" class="alert alert-info">
+    Espere por favor...
+</div>
+
+<ng-template #divPais>
+
+    <div class="row">
+        <div class="col-12">
+            <h1>País: {{ pais[0].altSpellings[2] }} </h1>
+            <hr>
+        </div>
+
+    </div>
+
+
+    <div class="row">
+        <div class="col-4">
+            <h3>Bandera:</h3>
+            <img [src]="pais[0].flags.png" class="img-thumbnail" style="border-style: solid;"/>
+        </div>
+
+        <div class="col-5">
+            <h3>Información Principal:</h3>
+            <div class="row">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <strong>Nombre Popular:</strong> {{ pais[0].name.common }}
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <strong>Nombre Oficial:</strong> {{ pais[0].name.official }}
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <strong>Población:</strong> {{ pais[0].population | number }}
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <strong>Capital:</strong> {{ pais[0].capital }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 3px;">
+            <div class="col-12">
+                <h3>Datos Geográficos:</h3>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <strong>Continente:</strong> {{ pais[0].region }}
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-4">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <strong>Región:</strong> {{ pais[0].subregion }}
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-4">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <strong>Coordenadas:</strong> {{ pais[0].capitalInfo.latlng[0] }}x{{ pais[0].capitalInfo.latlng[1] }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 3px;">
+            <div class="col-12">
+                <h3>Traducciones:</h3>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <span class="badge bg-primary mr-1" style="margin-right: 0.5vh; margin-left: 0.5vh;">{{ pais[0].translations['ara'].official }}</span>
+                    <span class="badge bg-primary mr-1" style="margin-right: 0.5vh; margin-left: 0.5vh;">{{ pais[0].translations['deu'].official }}</span>
+                    <span class="badge bg-primary mr-1" style="margin-right: 0.5vh; margin-left: 0.5vh;">{{ pais[0].translations['jpn'].official }}</span>
+                    <span class="badge bg-primary mr-1" style="margin-right: 0.5vh; margin-left: 0.5vh;">{{ pais[0].translations['kor'].official }}</span>
+                    <span class="badge bg-primary mr-1" style="margin-right: 0.5vh; margin-left: 0.5vh;">{{ pais[0].translations['pol'].official }}</span>
+                    <span class="badge bg-primary mr-1" style="margin-right: 0.5vh; margin-left: 0.5vh;">{{ pais[0].translations['rus'].official }}</span>
+                    <span class="badge bg-primary mr-1" style="margin-right: 0.5vh; margin-left: 0.5vh;">{{ pais[0].translations['spa'].official }}</span>
+                    <span class="badge bg-primary mr-1" style="margin-right: 0.5vh; margin-left: 0.5vh;">{{ pais[0].translations['tur'].official }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</ng-template>
